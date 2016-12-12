@@ -6,122 +6,131 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Recipe Reader: Your Online Recipe Book</title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
             width: 972px;
         }
+
         .auto-style2 {
             width: 575px;
-            text-align:right;
-            vertical-align:top;
-            
+            text-align: right;
+            vertical-align: top;
         }
+
         .titleHead {
             text-align: center;
             height: 93px;
-            font-size:50px;
+            font-size: 50px;
         }
     </style>
 </head>
 
-<body style="background-image:url(White-Chocolate-Raspberry-1024x682.jpg); background-size:cover;">
+<body style="background-image: url(White-Chocolate-Raspberry-1024x682.jpg); background-size: cover;">
     <form id="form1" runat="server">
-    <div style="width:1100px;margin-left:auto; margin-right:auto; background-color:ivory; padding: 30px; box-shadow: 5px 5px 5px #999999; font-family: Verdana, Geneva, Tahoma, sans-serif; border-radius: 15px;">
-        <!--  Top Header Start -->
-        <table>
-            <tr>
-                <td><a href="Default.aspx" title="Home"><img src="LTd5rzMXc.png" /> </a></td>
-                <td style="width:700px"><h1 style="font-family:'Comic Sans MS'; color:dodgerblue" class="titleHead">Recipe Reader</h1></td>
-                <td style="text-align:right; width:300px" class="auto-style2"><asp:Label id="lblCounter" runat="server">Visitors we've had: </asp:Label> <asp:Label ID="visitNo" runat="server"></asp:Label>
-                    <br />
-                    <br />
-                </td>
-            </tr>
-        </table><hr color="darkblue" size="4" />
-        <!--  Top Header End -->
-        <asp:LoginView ID="LoginView1" runat="server">
+        <div style="width: 1100px; margin-left: auto; margin-right: auto; background-color: ivory; padding: 30px; box-shadow: 5px 5px 5px #999999; font-family: Verdana, Geneva, Tahoma, sans-serif; border-radius: 15px;">
+            <!--  Top Header Start -->
+            <table>
+                <tr>
+                    <td><a href="Default.aspx" title="Home">
+                        <img src="LTd5rzMXc.png" />
+                    </a></td>
+                    <td style="width: 700px">
+                        <h1 style="font-family: 'Comic Sans MS'; color: dodgerblue" class="titleHead">Recipe Reader</h1>
+                    </td>
+                    <td style="text-align: right; width: 300px" class="auto-style2">
+                        <asp:Label ID="lblCounter" runat="server">Visitors we've had: </asp:Label>
+                        <asp:Label ID="visitNo" runat="server"></asp:Label>
+                        <br />
+                        <br />
+                    </td>
+                </tr>
+            </table>
+            <hr color="darkblue" size="4" />
+            <!--  Top Header End -->
+            <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
-                    <asp:Menu Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="50" StaticMenuItemStyle-CssClass="menuitems"  runat="server">
-                       <Items>
-                           <asp:MenuItem Text="Home" NavigateUrl="Default.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Contact Us" NavigateUrl="Contact.aspx"></asp:MenuItem>
-                       </Items>
+                    <asp:Menu Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="50" StaticMenuItemStyle-CssClass="menuitems" runat="server">
+                        <Items>
+                            <asp:MenuItem Text="Home" NavigateUrl="Default.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Contact Us" NavigateUrl="Contact.aspx"></asp:MenuItem>
+                        </Items>
                     </asp:Menu>
-                    <asp:LoginStatus ID="LoginStatus1"  CssClass="LoginName" runat="server" />
+                    <asp:LoginStatus ID="LoginStatus1" CssClass="LoginName" runat="server" />
+                    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
+                        <WizardSteps>
+                            <asp:CreateUserWizardStep runat="server" />
+                            <asp:CompleteWizardStep runat="server" />
+                        </WizardSteps>
+                    </asp:CreateUserWizard>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
-                     <asp:Menu Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="50" StaticMenuItemStyle-CssClass="menuitems"  runat="server">
-                       <Items>
-                           <asp:MenuItem Text="Home" NavigateUrl="Default.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Recipe List" NavigateUrl="Recipe.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Search Recipes" NavigateUrl="Search.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Add Recipe" NavigateUrl="AddRecipe.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Contact Us" NavigateUrl="Contact.aspx"></asp:MenuItem>
-                       </Items>
+                    <asp:Menu Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="50" StaticMenuItemStyle-CssClass="menuitems" runat="server">
+                        <Items>
+                            <asp:MenuItem Text="Home" NavigateUrl="Default.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Recipe List" NavigateUrl="Recipe.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Search Recipes" NavigateUrl="Search.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Add Recipe" NavigateUrl="AddRecipe.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Contact Us" NavigateUrl="Contact.aspx"></asp:MenuItem>
+                        </Items>
                     </asp:Menu>
-                    <asp:LoginStatus CssClass="LoginName" ID="LoginStatus1" runat="server" />                      
-                      <asp:LoginName  CssClass="LoginName" ID="LoginName1" runat="server" FormatString="Hello, {0}!" />
+                    <asp:LoginStatus CssClass="LoginName" ID="LoginStatus1" runat="server" />
+                    <asp:LoginName CssClass="LoginName" ID="LoginName1" runat="server" FormatString="Hello, {0}!" />
                 </LoggedInTemplate>
                 <RoleGroups>
                     <asp:RoleGroup Roles="Administrator">
                         <ContentTemplate>
-                             <asp:Menu Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="50" StaticMenuItemStyle-CssClass="menuitems"  runat="server">
-                       <Items>
-                           <asp:MenuItem  Text="Home" NavigateUrl="Default.aspx">
-                           </asp:MenuItem>
-                           <asp:MenuItem Text="Recipe List" NavigateUrl="Recipe.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Search Recipes" NavigateUrl="Search.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Add Recipe" NavigateUrl="AddRecipe.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Contact Us" NavigateUrl="Contact.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="Edit Menu Options" NavigateUrl="EditMenu.aspx"></asp:MenuItem>
-                           <asp:MenuItem Text="View Users" NavigateUrl="Users.aspx"></asp:MenuItem>
-                       </Items>
-                    </asp:Menu>
-                    <asp:LoginStatus ID="LoginStatus1"  CssClass="LoginName" runat="server" />
-            
-                         
+                            <asp:Menu Orientation="Horizontal" StaticMenuItemStyle-HorizontalPadding="50" StaticMenuItemStyle-CssClass="menuitems" runat="server">
+                                <Items>
+                                    <asp:MenuItem Text="Home" NavigateUrl="Default.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Recipe List" NavigateUrl="Recipe.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Search Recipes" NavigateUrl="Search.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Add Recipe" NavigateUrl="AddRecipe.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Contact Us" NavigateUrl="Contact.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Edit Menu Options" NavigateUrl="EditMenu.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="View Users" NavigateUrl="Users.aspx"></asp:MenuItem>
+                                </Items>
+                            </asp:Menu>
+                            <asp:LoginStatus ID="LoginStatus1" CssClass="LoginName" runat="server" />
+
+
                         </ContentTemplate>
                     </asp:RoleGroup>
                 </RoleGroups>
             </asp:LoginView>
 
 
-        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
-            <WizardSteps>
-                <asp:CreateUserWizardStep runat="server" />
-                <asp:CompleteWizardStep runat="server" />
-            </WizardSteps>
-        </asp:CreateUserWizard>
 
 
-    <hr color="darkblue" size="4" style="margin-left: 0px" />
-        <div style=" padding:30px;">
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
+
+            <hr color="darkblue" size="4" style="margin-left: 0px" />
+            <div style="padding: 30px;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <hr color="darkblue" size="4" />
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <h6>© Copyright Ashley Tjon-Hing Student #: 300744476 - COMP229 - Advanced Web Design - Fall 2016 </h6>
+                        <h6>Image Credit:
+                            <br />
+                            http://cliparts.co/cartoon-people-faces
+                            <br />
+                            http://www.doyoubake.com/yummy-recipes/
+                            <br />
+                            <asp:ContentPlaceHolder ID="credits" runat="server">
+                            </asp:ContentPlaceHolder>
+
+                        </h6>
+                        <p>&nbsp;</p>
+                    </td>
+                </tr>
+            </table>
         </div>
-         <hr color="darkblue" size="4" />
-    <table style="width: 100%;">
-	<tr>
-		<td>
-		<h6>© Copyright Ashley Tjon-Hing Student #: 300744476 - COMP229 - Advanced Web Design - Fall 2016 </h6>
-		<h6>Image Credit: <br/>
-		    http://cliparts.co/cartoon-people-faces <br/>
-            http://www.doyoubake.com/yummy-recipes/ <br/>
-            <asp:ContentPlaceHolder id="credits" runat="server">
-        
-        </asp:ContentPlaceHolder>
-  
-		</h6>
-		<p>&nbsp;</p>
-		</td>
-	</tr>
-</table>
-    </div>
     </form>
-   
+
 
 
 </body>
