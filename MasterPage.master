@@ -88,6 +88,14 @@
             </asp:LoginView>
 
 
+        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
+            <WizardSteps>
+                <asp:CreateUserWizardStep runat="server" />
+                <asp:CompleteWizardStep runat="server" />
+            </WizardSteps>
+        </asp:CreateUserWizard>
+
+
     <hr color="darkblue" size="4" style="margin-left: 0px" />
         <div style=" padding:30px;">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
